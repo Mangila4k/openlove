@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorry My Love</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff7f7f' fill-opacity='0.4' d='M50 20c-16.54 0-30 13.46-30 30 0 16.54 13.46 30 30 30 16.54 0 30-13.46 30-30 0-16.54-13.46-30-30-30zm0 10c11.05 0 20 8.95 20 20s-8.95 20-20 20-20-8.95-20-20 8.95-20 20-20z'/%3E%3C/svg%3E");
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    #noButton {
+      background-color: #ff7f7f;
+      color: white;
+    }
+
+    #yesButton {
+      background-color: #7fff7f;
+      color: white;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .happy {
+      color: #ff1493;
+    }
+
+    .flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 5s linear infinite;
+    }
+
+    .gif-container {
+      margin-top: 20px;
+    }
+
+    .gif-container img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) translateX(0);
+      }
+      100% {
+        transform: translateY(-100%) translateX(0);
+      }
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      .gif-container img {
+        max-width: 120px;
+      }
+
+      .image-container img {
+        max-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I'm Sorry MyLove 😢</h1>
+    <div class="buttons">
+      <button id="noButton">No</button>
+      <button id="yesButton">Yes</button>
+    </div>
+    <div class="gif-container" id="gifContainer"></div>
+    <div class="image-container" id="imageContainer"></div>
+    <div class="message" id="message"></div>
+  </div>
+
+  <div class="flowers" id="flowers"></div>
+
+  <script>
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
+    const message = document.getElementById('message');
+    const flowersContainer = document.getElementById('flowers');
+    const gifContainer = document.getElementById('gifContainer');
+    const imageContainer = document.getElementById('imageContainer');
+
+    // Replace these paths with your actual GIF and image paths
+    const sadGifs = [
+      "sad.gif", // Replace with your first sad GIF path
+      "sad1.gif", // Replace with your second sad GIF path
+      "sad3.gif"  // Replace with your third sad GIF path
+    ];
+    const happyGifPath = "happy.gif"; // Replace with your happy GIF path
+    const happyImagePath = "lovelove.png"; // Replace with your happy picture path
+
+    let sadGifIndex = 0;
+
+    noButton.addEventListener('click', () => {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+
+      // Display the next sad GIF
+      gifContainer.innerHTML = `<img src='${sadGifs[sadGifIndex]}' alt='Sad'>`;
+      sadGifIndex = (sadGifIndex + 1) % sadGifs.length; // Cycle through the GIFs
+    });
+
+    yesButton.addEventListener('click', () => {
+      message.innerHTML = "Sorry my love for being a bad BF lately. I promise that I'll change, I love you. 💖😊";
+      message.classList.add('happy');
+      document.body.style.background = "url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Cpath fill=\'%23ff1493\' fill-opacity=\'0.4\' d=\'M50 20c-16.54 0-30 13.46-30 30 0 16.54 13.46 30 30 30 16.54 0 30-13.46 30-30 0-16.54-13.46-30-30-30zm0 10c11.05 0 20 8.95 20 20s-8.95 20-20 20-20-8.95-20-20 8.95-20 20-20z\'/%3E%3C/svg%3E')";
+
+      // Remove buttons
+      noButton.remove();
+      yesButton.remove();
+
+      // Display happy GIF
+      gifContainer.innerHTML = `<img src='${happyGifPath}' alt='Happy'>`;
+
+      // Display happy picture
+      imageContainer.innerHTML = `<img src='${happyImagePath}' alt='Happy Picture'>`;
+
+      // Add floating flowers
+      for (let i = 0; i < 20; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.innerHTML = '🌸';
+        flower.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+        flower.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random speed
+        flowersContainer.appendChild(flower);
+      }
+    });
+  </script>
+</body>
+</html>
